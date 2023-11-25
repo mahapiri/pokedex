@@ -1,0 +1,97 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/OpenSans-VariableFont_wdth\,wght.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/OpenSans-Italic-VariableFont_wdth\,wght.ttf');
+    font-style: italic;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    background-color: white;
+    color: rgb(61,69,79);
+    margin: 0;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    padding-left: 16px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-top: 148px !important;
+    margin-left: 16px !important;
+    margin-bottom: 64px !important;
+    font-weight: 700;
+}
+
+
+
+.back-button {
+    position: absolute;
+    height: 32px;
+    left: 25px;
+    top: 70px;
+    padding-left: 16px;
+}
+
+.menu-section {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.pokeball-bg {
+    opacity: 0.05;
+    position: absolute;
+    right: -100px;
+    top: -60px;
+    max-width: 290px;
+}
+
+.menu-button {
+    position: absolute;
+    height: 40px;
+    right: 25px;
+    top: 65px;
+}
+
+.card-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 32px;
+}
+.card {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 256px !important;
+    height: 200px !important;
+    background-color: rgba(127, 255, 212, 0.7) !important;
+    border-color: 1px solid rgba(127, 255, 212, 0.05);
+    z-index: 2;
+    padding: 16px;
+}
+
+.card-bg {
+    z-index: 1;
+    width: 256px !important;
+    height: 200px !important;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-image: url('img/buttons/pokeball.svg');
+    background-size: 150px;
+    background-repeat: no-repeat;
+    background-position: bottom -25px right -20px;
+    opacity: 0.5;
+    filter: brightness(100%) invert(1) opacity(45%);
+}
