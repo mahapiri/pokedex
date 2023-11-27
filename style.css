@@ -82,6 +82,8 @@ h1 {
     border-radius: 20px !important;
     z-index: 2;
     padding: 8px;
+    margin-right: 16px;
+    margin-bottom: 16px;
 }
 
 .card-bg {
@@ -104,6 +106,20 @@ h1 {
     font-weight: bold;
     margin-left: 16px;
     margin-top: 8px;
+    opacity: 1 !important;
+    font-size: 22px;
+}
+
+.card-index {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-index h4 {
+    color: white;
+    opacity: 0.3;
+    margin-right: 4px;
+    font-size: 16px;
 }
 
 .card-undersection {
@@ -126,6 +142,7 @@ h1 {
 
 .card-undersection-img img {
     height: 125px;
+    max-width: 125px;
     filter: drop-shadow(2px 3px 7px whitesmoke);
 }
 
@@ -148,4 +165,8 @@ h1 {
     background-color: rgba(255, 255, 255, 0.25);
     color: rgba(245, 245, 245, 0.9);
     font-size: 14px;
+}
+
+.info-bar:empty {
+    display: none;
 }

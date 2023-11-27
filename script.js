@@ -1,5 +1,12 @@
-let pokemonArray = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard","Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Spearow","Fearow","Ekans","Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran♀","Nidorina","Nidoqueen","Nidoran♂","Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff","Zubat","Golbat","Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett","Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine","Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp","Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem","Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch'd","Doduo","Dodrio","Seel","Dewgong","Grimer","Muk","Shellder","Cloyster","Gastly","Haunter","Gengar","Onix","Drowzee","Hypno","Krabby","Kingler","Voltorb","Electrode","Exeggcute","Exeggutor","Cubone","Marowak","Hitmonlee","Hitmonchan","Lickitung","Koffing","Weezing","Rhyhorn","Rhydon","Chansey","Tangela","Kangaskhan","Horsea","Seadra","Goldeen","Seaking","Staryu","Starmie","Mr. Mime","Scyther","Jynx","Electabuzz","Magmar","Pinsir","Tauros","Magikarp","Gyarados","Lapras","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Porygon","Omanyte","Omastar","Kabuto","Kabutops","Aerodactyl","Snorlax","Articuno","Zapdos","Moltres","Dratini","Dragonair","Dragonite","Mewtwo","Mew"];
+let pokemonArray = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartortle", "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "clefairy", "clefable", "vulpix", "ninetales", "jigglypuff", "wigglytuff", "zubat", "golbat", "oddish", "gloom", "vileplume", "paras", "parasect", "venonat", "venomoth", "diglett", "dugtrio", "meowth", "persian", "psyduck", "golduck", "mankey", "primeape", "growlithe", "arcanine", "poliwag", "poliwhirl", "poliwrath", "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout", "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler", "golem", "ponyta", "rapidash", "slowpoke", "slowbro", "magnemite", "magneton", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder", "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby", "kingler", "voltorb", "electrode", "exeggcute", "exeggutor", "cubone", "marowak", "hitmonlee", "hitmonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon", "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking", "staryu", "starmie", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops", "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo", "mew"];
 
+
+let pokemonNames = [];
+let pokemonIDs = [];
+let pokemonHeights = []; 
+let pokemonImgs = [];
+let pokemonBigImgs = [];
+let typeOfElements = [];
 
 
 async function init() {
@@ -9,33 +16,48 @@ async function init() {
 
 
 async function loadPokemon() {
-    let url = 'https://pokeapi.co/api/v2/pokemon/charmander';
-    let response = await fetch(url);
-    let currentPokemon = await response.json();
-    pokemonName = currentPokemon['name'];
-    pokemonID = currentPokemon['id'];
-    pokemonHeight = currentPokemon['height'];
-    pokemonImg = currentPokemon['sprites']['other']['dream_world']['front_default'];
-    pokemonBigImg = currentPokemon['sprites']['other']['official-artwork']['front_default'];
-    typeOfElement = currentPokemon['types']['0']['type']['name'];
-    console.log(currentPokemon);
-    console.log(typeOfElement);
+    for (let i = 0; i < pokemonArray.length; i++) {
+        const element = pokemonArray[i];
+        let url = 'https://pokeapi.co/api/v2/pokemon/' + element;
+        let response = await fetch(url);
+        let currentPokemon = await response.json();
+        let pokemonName = currentPokemon['name'];
+        pokemonNames.push(pokemonName);
+        let pokemonID = currentPokemon['id'];
+        pokemonIDs.push(pokemonID);
+        let pokemonHeight = currentPokemon['height'];
+        pokemonHeights.push(pokemonHeight);
+        let pokemonImg = currentPokemon['sprites']['other']['dream_world']['front_default'];
+        pokemonImgs.push(pokemonImg);
+        let pokemonBigImg = currentPokemon['sprites']['other']['official-artwork']['front_default'];
+        pokemonBigImgs.push(pokemonBigImg);
+        let typeOfElement = currentPokemon['types']['0']['type']['name'];
+        typeOfElements.push(typeOfElement);     
+    }
 }
 
 
 function loadCard() {
     let content = document.getElementById('card-section');
-    content.innerHTML += /*html*/`
+    for (let i = 0; i < pokemonArray.length; i++) {
+        const element = pokemonArray[i];
+        content.innerHTML += /*html*/`
         <div class="card">
             <div class="card-bg"></div>
-                <h3 class="card-headline">${pokemonName.toUpperCase()}</h3>
+                <div class="card-index">
+                    <h3 class="card-headline">${pokemonNames[i].toUpperCase()}</h3>
+                    <h4>#00${pokemonIDs[i]}</h4>
+                </div>
                 <div class="card-undersection">
                     <div class="info-section">
-                        <p class="info-bar">${typeOfElement}</p>
-                        <p class="info-bar">sagdasdg</p>
+                        <p class="info-bar">${typeOfElements[i]}</p>
+                        <p class="info-bar"></p>
                     </div>
-                    <div class="card-undersection-img"><img src="${pokemonImg}" alt=""></div>
+                    <div class="card-undersection-img"><img src="${pokemonImgs[i]}" alt=""></div>
                 </div>
         </div>  
     `;
+        
+    }
+    
 }
