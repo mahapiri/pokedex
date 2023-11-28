@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body onload="init()">
-    <header>
+    <header id="header">
         <div>
             <img src="img/buttons/back.png" alt="Back" class="back-button">
             <div class="menu-section">
@@ -18,8 +18,12 @@
                 <img src="img/buttons/menu.png" alt="Menu" class="menu-button">
             </div>
         </div>
-        <h1>Pokédex</h1>
+        <div class="headline">
+            <h1>Pokédex</h1>
+            <input type="text" class="form-control inputfield" id="search" placeholder="Search Pokémon..." onkeyup="search()" required>
+        </div>
     </header>
+    <div class="info-card none" id="info-card">Cool</div>
     <div class="card-section" id="card-section"></div>
     
 

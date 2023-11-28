@@ -21,18 +21,30 @@ header{
     display: flex;
     flex-direction: column;
     width: 100vw;
-    padding-left: 16px;
 }
 
 h1 {
     font-size: 32px;
     margin-top: 148px !important;
-    margin-left: 16px !important;
-    margin-bottom: 64px !important;
+    margin-bottom: 32px !important;
     font-weight: 700;
 }
 
+.headline {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
 
+.inputfield {
+    width: 50vw !important;
+    height: 50px;
+    margin-bottom: 32px;
+}
+
+.inputfield::placeholder {
+    text-align: center;
+}
 
 .back-button {
     position: absolute;
@@ -70,6 +82,7 @@ h1 {
     flex-wrap: wrap;
     margin-left: 32px;
     margin-right: 32px;
+    gap: 16px;
 }
 .card {
     position: absolute;
@@ -77,13 +90,13 @@ h1 {
     left: 0px;
     width: 256px !important;
     height: 200px !important;
-    background-color: rgba(72,208,176, 0.7) !important;
+    background-color: rgba(55, 58, 57, 0.7) !important;
     border-color:rgba(255, 255, 255, 0.4) !important;
     border-radius: 20px !important;
     z-index: 2;
     padding: 8px;
-    margin-right: 16px;
     margin-bottom: 16px;
+    cursor: pointer;
 }
 
 .card-bg {
@@ -169,4 +182,122 @@ h1 {
 
 .info-bar:empty {
     display: none;
+}
+
+.red {
+    background-color: rgb(251,108,108) !important;
+}
+
+.green {
+    background-color: rgb(72,208,176) !important;
+}
+
+.blue {
+    background-color: rgb(118,189,254) !important;
+}
+
+.yellow {
+    background-color: rgb(248, 201, 73) !important;
+}
+
+.orange {
+    background-color: #d3b76b !important;
+}
+
+.grey {
+    background-color: rgb(180, 180, 180) !important;
+}
+
+.lila {
+    background-color: rgb(183, 143, 230) !important;
+}
+
+.brown {
+    background-color: rgb(146, 137, 113) !important;
+}
+
+.pink {
+    background-color: pink !important;
+}
+
+.darkred {
+    background-color: darkred !important;
+}
+
+.mint {
+    background-color: rgb(175, 221, 197) !important;
+}
+
+.lightgrey {
+    background-color: lightgrey !important;
+}
+
+.white {
+    background-color: rgb(136, 136, 136) !important;
+}
+
+.lightblue {
+    background-color: lightsteelblue;
+}
+
+.darkyellow {
+    background-color: rgb(212, 212, 79) !important;
+}
+
+.none {
+    display: none;
+}
+
+.info-card {
+    font-size: 32px;
+}
+
+.love-button {
+    position: absolute;
+    height: 32px;
+    right: 25px;
+    top: 70px;
+    padding-right: 16px;
+}
+
+.info-card-headline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.info-card-section {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.i-c-h-undersection {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: self-end;
+    padding-right: 32px;
+    padding-left: 16px;
+}
+
+.i-c-h-undersection div {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.cardAbove {
+    width: 100vw;
+    height: 50vh;
+    background-color: rgba(55, 58, 57, 0.7) !important;
+    z-index: 100;
+}
+
+.cardBelow {
+    width: 100vw;
+    height: 50vh;
+    z-index: 200;
+    background-color: white;
+    border-radius: 50px;
 }
