@@ -112,27 +112,38 @@ function loadInfoCard(index) {
     pokedex.classList.add('none');
     header.classList.add('none');
     infoCard.innerHTML = generateInfoCardHTML(index);
+    changeInfoCardBg(index);
 }
 
 function generateInfoCardHTML(i) {
     return /*html*/`
-        <div class="header cardAbove">
-            <div>
-                <img src="img/buttons/back.png" alt="Back" class="back-button">
-                <img src="img/buttons/love.png" alt="Love" class="love-button">
-            </div>
-            <div class="info-card-headline">
-                <div class="i-c-h-undersection">
-                    <h1 class="card-headline">Bulbasaur</h1>
-                    <div>#001</div>
+            <div class="header cardAbove" id="cardAbove${i}">
+                <div>
+                    <img src="img/buttons/back.png" alt="Back" class="back-button invert">
+                    <img src="img/buttons/love.png" alt="Love" class="love-button">
                 </div>
-                <div class="info-card-section">
-                    <p class="info-bar">Grass</p>
-                    <p class="info-bar">Poison</p>
+                <div class="info-card-headline">
+                    <div class="i-c-h-undersection">
+                        <h1 class="card-headline">${pokemonNames[i].toUpperCase()}</h1>
+                        <div>#001</div>
+                    </div>
+                    <div class="info-card-section">
+                        <p class="info-bar">Grass</p>
+                        <p class="info-bar">Poison</p>
+                    </div>
                 </div>
+                <img src="" alt="">
             </div>
-            <img src="" alt="">
-        </div>
-        <div class="cardBelow"></div>
+            <div class="cardBelow"></div>       
     `;
+}
+
+
+function changeInfoCardBg(i) {
+    let element = document.getElementById(`element${i}`);
+    let type = element.innerHTML.trim().toLowerCase();
+    let card = document.getElementById(`cardAbove${i}`);
+    if (cardBg.hasOwnProperty(type)) {
+        card.classList.add(cardBg[type]);
+    } 
 }
