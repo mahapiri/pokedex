@@ -24,6 +24,10 @@ let pokemonHeights = [];
 let pokemonImgs = [];
 let pokemonBigImgs = [];
 let typeOfElements = [];
+let typeTwo = [];
+
+
+let currentPokemon;
 
 
 async function init() {
@@ -40,13 +44,26 @@ async function loadPokemon() {
         const element = pokemonArray[i];
         let url = `https://pokeapi.co/api/v2/pokemon/${element}`;
         let response = await fetch(url);
-        let currentPokemon = await response.json();
+        currentPokemon = await response.json();
         pokemonNames.push(currentPokemon['name']);
         pokemonIDs.push(currentPokemon['id']);
         pokemonHeights.push(currentPokemon['height']);
         pokemonImgs.push(currentPokemon['sprites']['other']['dream_world']['front_default']);
         pokemonBigImgs.push(currentPokemon['sprites']['other']['official-artwork']['front_default']);
-        typeOfElements.push(currentPokemon['types']['0']['type']['name']);     
+        typeOfElements.push(currentPokemon['types']['0']['type']['name']);
+        // console.log(currentPokemon);     
+    }
+}
+
+
+async function loadTypeTwo() {
+    let newItem = currentPokemon['types']['1']['type']['name'];
+
+    try {
+        await fetch (newItem);
+        typeTwo.indexOf(newItem) === -1 ? typeTwo.push(newItem): console.log('Fertig');
+    } catch (e) {
+        console.log('Fehler')
     }
 }
 
@@ -119,20 +136,22 @@ function generateInfoCardHTML(i) {
     return /*html*/`
             <div class="header cardAbove" id="cardAbove${i}">
                 <div>
-                    <img src="img/buttons/back.png" alt="Back" class="back-button invert">
+                    <img src="img/buttons/back.png" alt="Back" class="back-button invert" onclick="">
                     <img src="img/buttons/love.png" alt="Love" class="love-button">
                 </div>
                 <div class="info-card-headline">
                     <div class="i-c-h-undersection">
                         <h1 class="card-headline">${pokemonNames[i].toUpperCase()}</h1>
-                        <div>#001</div>
+                        <div>#${pokemonIDs[i]}</div>
                     </div>
                     <div class="info-card-section">
-                        <p class="info-bar">Grass</p>
-                        <p class="info-bar">Poison</p>
+                        <p class="info-bar">${typeOfElements[i]}</p>
+                        <p class="info-bar">cool</p>
                     </div>
                 </div>
-                <img src="" alt="">
+                <div class="bigImg-section">
+                    <img src="${pokemonBigImgs[i]}" alt="" class="bigImg">  
+                </div>
             </div>
             <div class="cardBelow"></div>       
     `;
