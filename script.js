@@ -21,17 +21,32 @@ let cardBg = {
 let pokemonNames = [];
 let pokemonIDs = [];
 let pokemonHeights = []; 
+let pokemonWeights = [];
 let pokemonImgs = [];
 let pokemonBigImgs = [];
 let typeOfElements = [];
 let typeTwo = [];
-
+let pokemonSpecies = []; // Was für ein Pokemon Art
+let pokemonEggGroups = [];
+let pokemonHabitat = [];
+let attackName1 = [];
+let attackValue1 = [];
+let attackName2 = [];
+let attackValue2 = [];
+let attackName3 = [];
+let attackValue3 = [];
+let attackName4 = [];
+let attackValue4 = [];
+let attackName5 = [];
+let attackValue5 = [];
 
 let currentPokemon;
 
 
 async function init() {
     await loadPokemon();
+    await loadPokemonInfos();
+    await loadPokemonBaseStats();
     loadCard();
 
     let searchInput = document.getElementById('search');
@@ -45,13 +60,45 @@ async function loadPokemon() {
         let url = `https://pokeapi.co/api/v2/pokemon/${element}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
-        pokemonNames.push(currentPokemon['name']);
+        // pokemonNames.push(currentPokemon['species']);   / Englische Pokemon Namen
         pokemonIDs.push(currentPokemon['id']);
         pokemonHeights.push(currentPokemon['height']);
+        pokemonWeights.push[currentPokemon['weight']];
         pokemonImgs.push(currentPokemon['sprites']['other']['dream_world']['front_default']);
         pokemonBigImgs.push(currentPokemon['sprites']['other']['official-artwork']['front_default']);
         typeOfElements.push(currentPokemon['types']['0']['type']['name']);
-        // console.log(currentPokemon);     
+    }
+}
+
+async function loadPokemonInfos() {
+    for (let i = 0; i < pokemonArray.length; i++) {
+        const element = pokemonArray[i];
+        let url = `https://pokeapi.co/api/v2/pokemon-species/${element}`;
+        let response = await fetch(url);
+        let currentPokemonSpecies = await response.json();
+        pokemonNames.push(currentPokemonSpecies['names']['5']['name']);
+        pokemonSpecies.push(currentPokemonSpecies['genera']['4']['genus']);
+        pokemonEggGroups.push(currentPokemonSpecies['egg_groups']['0']['monster']);
+        pokemonHabitat.push(currentPokemonSpecies['habitat']['name']);
+    }
+}
+
+async function loadPokemonBaseStats() {
+    for (let i = 0; i < pokemonArray.length; i++) {
+        const element = pokemonArray[i];
+        let url = `https://pokeapi.co/api/v2/pokemon/${element}`;
+        let response = await fetch(url);
+        let currentPokemonStats = await response.json();
+        attackName1.push(currentPokemonStats['stats']['0']['stat']['name']);
+        attackValue1.push(currentPokemonStats['stats']['0']['base_stat']);
+        attackName2.push(currentPokemonStats['stats']['1']['stat']['name']);
+        attackValue2.push(currentPokemonStats['stats']['1']['base_stat']);
+        attackName3.push(currentPokemonStats['stats']['2']['stat']['name']);
+        attackValue3.push(currentPokemonStats['stats']['2']['base_stat']);
+        attackName4.push(currentPokemonStats['stats']['3']['stat']['name']);
+        attackValue4.push(currentPokemonStats['stats']['3']['base_stat']);
+        attackName5.push(currentPokemonStats['stats']['4']['stat']['name']);
+        attackValue5.push(currentPokemonStats['stats']['5']['base_stat']);
     }
 }
 
@@ -153,7 +200,39 @@ function generateInfoCardHTML(i) {
                     <img src="${pokemonBigImgs[i]}" alt="" class="bigImg">  
                 </div>
             </div>
-            <div class="cardBelow"></div>       
+            <div class="cardBelow">
+                <div>
+                    <a href="">About</a>
+                    <a href="">Base Stats</a>
+                </div>
+                <tbody>
+                    <tr>
+                        <td>Species</td>
+                        <td>${pokemonSpecies[i]}</td>
+                    </tr>
+                    <tr>
+                        <td>Height</td>
+                        <td>${pokemonHeights[i]}</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td>${pokemonWeights[i]}</td>
+                    </tr>
+                </tbody>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">Breeding</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Egg Groups</td>
+                            <td>${pokemonEggGroups[i]}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>       
     `;
 }
 
