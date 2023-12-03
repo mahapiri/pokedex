@@ -26,7 +26,7 @@ let pokemonImgs = [];
 let pokemonBigImgs = [];
 let typeOfElements = [];
 let typeTwo = [];
-let pokemonSpecies = []; // Was für ein Pokemon Art
+let pokemonSpecies = [];
 let pokemonEggGroups = [];
 let pokemonHabitat = [];
 let attackName1 = [];
@@ -60,10 +60,10 @@ async function loadPokemon() {
         let url = `https://pokeapi.co/api/v2/pokemon/${element}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
-        // pokemonNames.push(currentPokemon['species']);   / Englische Pokemon Namen
+        pokemonNames.push(currentPokemon['species']['name']);
         pokemonIDs.push(currentPokemon['id']);
         pokemonHeights.push(currentPokemon['height']);
-        pokemonWeights.push[currentPokemon['weight']];
+        pokemonWeights.push(currentPokemon['weight']);
         pokemonImgs.push(currentPokemon['sprites']['other']['dream_world']['front_default']);
         pokemonBigImgs.push(currentPokemon['sprites']['other']['official-artwork']['front_default']);
         typeOfElements.push(currentPokemon['types']['0']['type']['name']);
@@ -76,9 +76,8 @@ async function loadPokemonInfos() {
         let url = `https://pokeapi.co/api/v2/pokemon-species/${element}`;
         let response = await fetch(url);
         let currentPokemonSpecies = await response.json();
-        pokemonNames.push(currentPokemonSpecies['names']['5']['name']);
-        pokemonSpecies.push(currentPokemonSpecies['genera']['4']['genus']);
-        pokemonEggGroups.push(currentPokemonSpecies['egg_groups']['0']['monster']);
+        pokemonSpecies.push(currentPokemonSpecies['genera']['7']['genus']);
+        pokemonEggGroups.push(currentPokemonSpecies['egg_groups']['0']['name']);
         pokemonHabitat.push(currentPokemonSpecies['habitat']['name']);
     }
 }
@@ -99,6 +98,7 @@ async function loadPokemonBaseStats() {
         attackValue4.push(currentPokemonStats['stats']['3']['base_stat']);
         attackName5.push(currentPokemonStats['stats']['4']['stat']['name']);
         attackValue5.push(currentPokemonStats['stats']['5']['base_stat']);
+
     }
 }
 
@@ -177,6 +177,7 @@ function loadInfoCard(index) {
     header.classList.add('none');
     infoCard.innerHTML = generateInfoCardHTML(index);
     changeInfoCardBg(index);
+
 }
 
 function generateInfoCardHTML(i) {
@@ -201,38 +202,40 @@ function generateInfoCardHTML(i) {
                 </div>
             </div>
             <div class="cardBelow">
-                <div>
+                <div class="infocard-below-headline">
                     <a href="">About</a>
-                    <a href="">Base Stats</a>
+                    <a href="" class="bold">Base Stats</a>
                 </div>
-                <tbody>
-                    <tr>
-                        <td>Species</td>
-                        <td>${pokemonSpecies[i]}</td>
-                    </tr>
-                    <tr>
-                        <td>Height</td>
-                        <td>${pokemonHeights[i]}</td>
-                    </tr>
-                    <tr>
-                        <td>Weight</td>
-                        <td>${pokemonWeights[i]}</td>
-                    </tr>
-                </tbody>
-                <table>
-                    <thead>
-                        <tr>
+                <div class="chart-style">
+                    <canvas id="myChart${i}"></canvas>
+                </div>
+            </div>
+            
+<!--                <table class="infocard-about">
+                    <tbody>
+                        <tr class="mg-8">
+                            <td class="gray">Species</td>
+                            <td>${pokemonSpecies[i]}</td>
+                        </tr>
+                        <tr class="mg-8">
+                            <td class="gray">Height</td>
+                            <td>${pokemonHeights[i]}</td>
+                        </tr>
+                        <tr class="mg-8">
+                            <td class="gray">Weight</td>
+                            <td>${pokemonWeights[i]}</td>
+                        </tr>
+                        <tr class="mg-16">
                             <th colspan="2">Breeding</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Egg Groups</td>
+                        <tr class="mg-8">
+                            <td class="gray">Egg Groups</td>
                             <td>${pokemonEggGroups[i]}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>       
+-->
     `;
 }
 
@@ -243,5 +246,6 @@ function changeInfoCardBg(i) {
     let card = document.getElementById(`cardAbove${i}`);
     if (cardBg.hasOwnProperty(type)) {
         card.classList.add(cardBg[type]);
-    } 
+    };
+    chartPokemon(i);
 }

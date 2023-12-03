@@ -299,16 +299,6 @@ h1 {
     background-color: rgba(55, 58, 57, 0.7);
 }
 
-.cardBelow {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 45%;
-    z-index: 2;
-    background-color: white;
-    border-radius: 50px;
-}
-
 .invert {
     filter: invert(1);
 }
@@ -325,4 +315,71 @@ h1 {
     max-height: 256px;
     max-width: 256px;
     margin-top: 36px;
+}
+
+.cardBelow {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 45%;
+    z-index: 2;
+    background-color: white;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+}
+
+.infocard-below-headline {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 22px;
+}
+
+.infocard-below-headline a {
+    text-decoration: none;
+    color: rgb(138, 138, 138);
+    cursor: pointer;
+}
+
+.infocard-below-headline a:hover {
+    border-bottom: 2px solid blue;
+    padding-bottom: 16px;
+}
+
+.bold {
+    font-weight: bold;
+    color: black !important;
+    border-bottom: 2px solid blue;
+    padding-bottom: 16px;
+}
+
+.infocard-about {
+   margin-top: 16px; 
+   font-size: 18px;
+}
+
+.gray {
+    color: rgb(138, 138, 138);
+    font-weight: bold;
+}
+
+.mg-8 {
+    margin-bottom: 8px;
+}
+
+.mg-16 {
+    padding-top: 32px;
+}
+
+.chart-style {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 48px;
+    padding-top: 16px;
 }
