@@ -3,38 +3,18 @@
     src: url('fonts/OpenSans-VariableFont_wdth\,wght.ttf');
 }
 
-@font-face {
-    font-family: 'Open Sans';
-    src: url('fonts/OpenSans-Italic-VariableFont_wdth\,wght.ttf');
-    font-style: italic;
-}
-
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     background-color: white;
     color: rgb(61,69,79);
     margin: 0;
+    padding: 0;
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
-
 }
-
-
-/* .phone-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 430px;
-    max-height: 932px;
-    border: 1px solid black;
-    border-radius: 25px;
-    margin-top: 32px;
-    margin-bottom: 32px;
-    overflow: scroll;
-} */
 
 header{
     display: flex;
@@ -53,6 +33,13 @@ h1 {
     display: flex;
     flex-direction: column; 
     align-items: center;
+    margin-top: 48px;
+    padding-bottom: 32px;
+    gap: 32px;
+}
+
+.logo {
+    height: 128px;
 }
 
 .inputfield {
@@ -74,26 +61,8 @@ h1 {
     cursor: pointer;
 }
 
-.menu-section {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-}
-
-.pokeball-bg {
-    opacity: 0.05;
-    position: absolute;
-    right: -100px;
-    top: -60px;
-    max-width: 290px;
-}
-
-.menu-button {
-    position: absolute;
-    height: 40px;
-    right: 25px;
-    top: 65px;
+.back-button:hover {
+    opacity: 0.7;
 }
 
 .card-section {
@@ -117,6 +86,10 @@ h1 {
     padding: 8px;
     margin-bottom: 16px;
     cursor: pointer;
+}
+
+.card:hover {
+    opacity: 0.85;
 }
 
 .card-bg {
@@ -274,19 +247,9 @@ h1 {
     font-size: 32px;
 }
 
-.love-button {
-    position: absolute;
-    height: 32px;
-    right: 25px;
-    top: 70px;
-    padding-right: 16px;
-    filter: invert(1);
-}
-
 .info-card-headline {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
 .info-card-section {
@@ -334,6 +297,7 @@ h1 {
     max-height: 256px;
     max-width: 256px;
     margin-top: 36px;
+    padding-bottom: 16px;
 }
 
 .cardBelow {
@@ -384,6 +348,7 @@ h1 {
 .gray {
     color: rgb(138, 138, 138);
     font-weight: bold;
+    padding-right: 16px;
 }
 
 .mg-8 {
@@ -401,4 +366,50 @@ h1 {
     width: 100%;
     padding-bottom: 48px;
     padding-top: 16px;
+}
+
+
+.d-none {
+    display: none;
+}
+
+@media (min-width: 900px) {
+    .back-button {
+        left: 280px
+    }
+    .infocard-headline {
+        margin-left: 280px;
+    }
+    .mg-270 {
+        margin-left: 270px;
+    }
+    .i-c-h-undersection div {
+        margin-right: 280px;
+    }
+}
+
+@media (max-width: 590px) {
+    .logo {
+        height: 100px;
+    }
+}
+
+@media (min-height: 810px) and (max-height: 900px) {
+    .bigImg {
+        max-height: 220px;
+    }
+}
+
+@media (max-height: 810px) {
+    .bigImg {
+        max-height: 148px;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-height: 680px) {
+    .bigImg {
+        max-height: 178px;
+        padding-bottom: 120px;
+    }
 }

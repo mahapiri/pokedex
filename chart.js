@@ -10,11 +10,11 @@ new Chart(ctx, {
       data: [attackValue1[i], attackValue2[i], attackValue3[i], attackValue4[i], attackValue5[i]],
       borderWidth: 1,
       backgroundColor: [
-        'rgb(0, 99, 132)',
-        'rgb(75, 192, 192)',
-        'rgb(255, 205, 86)',
-        'rgb(201, 203, 207)',
-        'rgb(54, 162, 235)'
+        'rgba(0, 99, 132, 0.6)',
+        'rgba(75, 192, 192, 0.6)',
+        'rgba(255, 205, 86, 0.6)',
+        'rgba(201, 203, 207, 0.6)',
+        'rgba(54, 162, 235, 0.6)'
       ],
       label: ' ',
     }]
